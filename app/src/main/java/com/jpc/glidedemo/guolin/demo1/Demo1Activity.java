@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.jpc.glidedemo.R;
 import java.io.File;
 
@@ -22,6 +23,28 @@ public class Demo1Activity extends AppCompatActivity {
         setContentView(R.layout.activity_guolin_demo1);
         imageView = (ImageView) findViewById(R.id.image_view);
     }
+
+
+
+
+    /**
+     * 占位图
+     */
+    public void loadImage(View view) {
+        String url = "http://cn.bing.com/az/hprichbg/rb/Dongdaemun_ZH-CN10736487148_1920x1080.jpg";
+        Glide.with(this)
+                .load(url)
+                .placeholder(R.drawable.pic_3)//加载过程占位图
+                .error(R.mipmap.ic_launcher)//出错图
+                .diskCacheStrategy(DiskCacheStrategy.NONE) //禁用磁盘缓存
+                .skipMemoryCache(true)//禁用内存缓存
+                .into(imageView);
+    }
+
+
+
+
+
 //待看
 //        public void loadImage0(View view) {
 //        // 加载二进制流
@@ -29,7 +52,7 @@ public class Demo1Activity extends AppCompatActivity {
 //        Glide.with(this).load().load(image).into(imageView);
 //    }
 
-    public void loadImage(View view) {
+    public void loadImage4(View view) {
         Uri uri = Uri.fromFile(new File(Environment.getExternalStorageDirectory() + "/1.jpg"));
         Glide.with(this).load(uri).into(imageView);
     }
