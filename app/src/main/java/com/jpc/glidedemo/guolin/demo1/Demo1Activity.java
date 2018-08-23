@@ -31,6 +31,22 @@ public class Demo1Activity extends AppCompatActivity {
      * 占位图
      */
     public void loadImage(View view) {
+        String url = "http://p1.pstatp.com/large/166200019850062839d3";
+        Glide.with(this)
+                .load(url)
+//                .asBitmap()
+//                .asGif() //
+
+                .placeholder(R.drawable.pic_3)//加载过程占位图
+                .error(R.mipmap.ic_launcher)//出错图
+                .diskCacheStrategy(DiskCacheStrategy.NONE) //禁用磁盘缓存
+//                .skipMemoryCache(true)//禁用内存缓存
+                .into(imageView);
+    }
+    /**
+     * 占位图
+     */
+    public void loadImage6(View view) {
         String url = "http://cn.bing.com/az/hprichbg/rb/Dongdaemun_ZH-CN10736487148_1920x1080.jpg";
         Glide.with(this)
                 .load(url)
