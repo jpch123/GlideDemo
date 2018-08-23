@@ -25,12 +25,25 @@ public class Demo1Activity extends AppCompatActivity {
     }
 
 
-
-
     /**
      * 占位图
      */
     public void loadImage(View view) {
+        String url = "http://p1.pstatp.com/large/166200019850062839d3";
+        Glide.with(this)
+                .load(url)
+                .override(100,100) //设置大小后gif还可以动哦
+                .placeholder(R.drawable.pic_3)//加载过程占位图
+                .error(R.mipmap.ic_launcher)//出错图
+                .diskCacheStrategy(DiskCacheStrategy.NONE) //禁用磁盘缓存
+//                .skipMemoryCache(true)//禁用内存缓存
+                .into(imageView);
+    }
+
+    /**
+     * 占位图
+     */
+    public void loadImage7(View view) {
         String url = "http://p1.pstatp.com/large/166200019850062839d3";
         Glide.with(this)
                 .load(url)
